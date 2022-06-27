@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdevcamp/helpers/utils.dart';
 
 class TreesWidget extends StatefulWidget {
   TreesWidget({Key? key}) : super(key: key);
@@ -64,7 +65,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                 ),
                 child: const Icon(
                   Icons.forest, size: 180, 
-                  color: Color(0xFF2AC384)
+                  color: Utils.mainGreen
                 )
               ),
 
@@ -78,7 +79,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   opacity: 0.5,
                   child: Icon(
                     Icons.forest, size: 100, 
-                    color: Color(0xFF2AC384)
+                    color: Utils.mainGreen
                   ),
                 )
               ),
@@ -91,7 +92,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   opacity: 0.5,
                   child: Icon(
                     Icons.forest, size: 70, 
-                    color: Color(0xFF2AC384)
+                    color: Utils.mainGreen
                   ),
                 )
               ),
@@ -108,7 +109,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   opacity: 0.2,
                   child: Icon(
                     Icons.forest, size: 150, 
-                    color: Color(0xFF2AC384)
+                    color: Utils.mainGreen
                   ),
                 )
               ),
@@ -118,19 +119,28 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                 right: 320,
                 child: Icon(
                   Icons.forest, size: 120, 
-                  color: Color(0xFF2AC384)
+                  color: Utils.mainGreen
+                )
+              ),
+
+              const Positioned(
+                bottom: -25,
+                right: 80,
+                child: Icon(
+                  Icons.forest, size: 220, 
+                  color: Utils.mainGreen
                 )
               ),
 
               SlideTransition(
                 position: Tween<Offset>(
-                  begin: Offset(-1.0, (constraints.maxHeight - 240) / 240),
-                  end: Offset(MediaQuery.of(context).size.width / 240, (constraints.maxHeight - 240) / 240)
+                  begin: Offset(-1.0, (constraints.maxHeight - 230) / 230),
+                  end: Offset(MediaQuery.of(context).size.width / 230, (constraints.maxHeight - 230) / 230)
                  ).animate(CurvedAnimation(parent: controller4, curve: Curves.linear)
                 ),
                 child: const Icon(
-                  Icons.forest, size: 250, 
-                  color: Color(0xFF2AC384)
+                  Icons.forest, size: 240, 
+                  color: Utils.mainGreen
                 )
               ),
               

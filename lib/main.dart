@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/flutterdevcampfonts.dart';
 import 'package:flutterdevcamp/helpers/utils.dart';
 import 'package:flutterdevcamp/widgets/flutterdevcampheader.dart';
+import 'package:flutterdevcamp/widgets/footerwidget.dart';
 import 'package:flutterdevcamp/widgets/primarybanner.dart';
 import 'package:flutterdevcamp/widgets/secondarybanner.dart';
 import 'package:flutterdevcamp/widgets/staytunedbanner.dart';
 import 'package:flutterdevcamp/widgets/sunwidget.dart';
 import 'package:flutterdevcamp/widgets/treeswidget.dart';
+import 'package:flutterdevcamp/widgets/upcomingeventsbanner.dart';
 
 void main() {
 
@@ -45,22 +47,16 @@ class _FlutterDevCampAppState extends State<FlutterDevCampApp> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-
+          children: const [
             PrimaryBanner(),
-
+            
             SecondaryBanner(),
 
             StayTunedBanner(),
             
-            Container(
-              height: 300,
-              color: Colors.white
-            ),
-            Container(
-              height: 150,
-              color: Utils.darkBlue
-            ),
+            UpcomingEventsBanner(),
+            
+            FooterWidget()
           ],
         ),
       ),
