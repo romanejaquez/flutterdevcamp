@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/flutterdevcampfonts.dart';
 import 'package:flutterdevcamp/helpers/utils.dart';
+import 'package:flutterdevcamp/models/primarybannerstyles.dart';
 import 'package:flutterdevcamp/widgets/flutterdevcampheader.dart';
 import 'package:flutterdevcamp/widgets/sunwidget.dart';
 import 'package:flutterdevcamp/widgets/treeswidget.dart';
@@ -10,13 +11,23 @@ class PrimaryBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    PrimaryBannerStyles styles = Utils.primaryBannerStyles[Utils.getDeviceType(context)] as PrimaryBannerStyles;
+    
     return Container(
-      height: 700,
+      height: 850,
       color: Utils.mainBlue,
       child: Stack(
         children: [
           // trees
-          TreesWidget(),
+          Positioned.fill(
+            bottom: 50,
+            left: 0,
+            right: 0,
+            child: Stack(children: [
+              TreesWidget()
+            ])
+          ),
 
           Center(
             child: Padding(
@@ -29,35 +40,35 @@ class PrimaryBanner extends StatelessWidget {
                   Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      const Text('Flutter',
+                      Text('Flutter',
                         style: TextStyle(
                           color: Colors.white, 
-                          fontSize: 80
+                          fontSize: styles.flutterFontSize
                         )
                       ),
                       Container(
-                        margin: const EdgeInsets.only(left: 230),
-                        child: const Icon(FlutterDevCampFonts.icon1,
-                          size: 80,
+                        margin: EdgeInsets.only(left: styles.tentIconLeftMargin),
+                        child: Icon(FlutterDevCampFonts.icon1,
+                          size: styles.tentIconSize,
                           color: Colors.white
                         ),
                       ),
                       Positioned(
-                        top: -10,
+                        top: styles.dashIconTopMargin,
                         child: Container(
-                          margin: const EdgeInsets.only(left: 410),
-                          child: const Icon(FlutterDevCampFonts.icon2,
-                            size: 90,
+                          margin: EdgeInsets.only(left: styles.dashIconLeftMargin),
+                          child: Icon(FlutterDevCampFonts.icon2,
+                            size: styles.dashIconSize,
                             color: Colors.white
                           )
                         ),
                       ),
                     ],
                   ),
-                  const Text('Dev Camp \'22',
+                  Text('Dev Camp \'22',
                     style: TextStyle(
                       color: Colors.white, 
-                      fontSize: 120,
+                      fontSize: styles.devCampFontSize,
                       fontWeight: FontWeight.bold
                     )
                   ),
@@ -69,9 +80,9 @@ class PrimaryBanner extends StatelessWidget {
                       color: Utils.lightBlue,
                       borderRadius: BorderRadius.circular(30)
                     ),
-                    child: const Text('Web Edition',
+                    child: Text('Web Edition',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: styles.webEditionfontSize,
                         fontWeight: FontWeight.bold,
                         color: Utils.mainBlue)
                     )
@@ -82,10 +93,20 @@ class PrimaryBanner extends StatelessWidget {
           ),
 
           // sun
-          SunWidget(),
+          const SunWidget(),
 
           // header
-          const FlutterDevCampHeader()
+          const FlutterDevCampHeader(),
+
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: 50,
+              color: Utils.mainGreen
+            ),
+          )
         ],
       )
     );

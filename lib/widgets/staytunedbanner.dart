@@ -21,15 +21,15 @@ class StayTunedBanner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text('Stay Tuned!',
+                  const Text('Stay Tuned!',
                     style: TextStyle(color: Utils.mainBlue, fontWeight: FontWeight.bold, fontSize: 50)
                   ),
-                  SizedBox(height: 30),
-                  Text('Subscribe to get notified\nof upcoming events coming\nto your area!',
+                  const SizedBox(height: 30),
+                  const Text('Subscribe to get notified\nof upcoming events coming\nto your area!',
                     textAlign: TextAlign.right,
                     style: TextStyle(color: Utils.mainBlue, fontSize: 30)
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -50,7 +50,7 @@ class StayTunedBanner extends StatelessWidget {
                         )
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width / 3,
+                        width: 300,
                         padding: const EdgeInsets.only(
                           top: 5, bottom: 5, left: 35, right: 35
                         ),
@@ -59,7 +59,7 @@ class StayTunedBanner extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(60)
                         ),
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none
                           ),

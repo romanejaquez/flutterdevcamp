@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/utils.dart';
+import 'package:flutterdevcamp/models/primarybannerstyles.dart';
 
 class TreesWidget extends StatefulWidget {
   TreesWidget({Key? key}) : super(key: key);
@@ -51,24 +52,28 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+
+    PrimaryBannerStyles styles = Utils.primaryBannerStyles[Utils.getDeviceType(context)] as PrimaryBannerStyles;
+
     return Positioned.fill(
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
+            clipBehavior: Clip.none,
             children: [
-    
+                
               SlideTransition(
                 position: Tween<Offset>(
-                  begin: Offset(-1.0, (constraints.maxHeight - 175) / 175),
-                  end: Offset(MediaQuery.of(context).size.width / 175, (constraints.maxHeight - 175) / 175)
+                  begin: Offset(-1.0, (constraints.maxHeight - styles.tree1Size) / styles.tree1Size),
+                  end: Offset(MediaQuery.of(context).size.width / styles.tree1Size, (constraints.maxHeight - styles.tree1Size) / styles.tree1Size)
                   ).animate(CurvedAnimation(parent: controller1, curve: Curves.linear)
                 ),
-                child: const Icon(
-                  Icons.forest, size: 180, 
+                child: Icon(
+                  Icons.forest, size: styles.tree1Size + (styles.tree1Size * 0.020), 
                   color: Utils.mainGreen
                 )
               ),
-
+              
               SlideTransition(
                 position: Tween<Offset>(
                   begin: Offset(-1.0, (constraints.maxHeight - 98) / 98),
@@ -83,8 +88,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   ),
                 )
               ),
-
-    
+              
               Positioned(
                 bottom: -7,
                 left: MediaQuery.of(context).size.width / 2,
@@ -96,9 +100,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   ),
                 )
               ),
-    
-              
-
+                
               SlideTransition(
                 position: Tween<Offset>(
                   begin: Offset(-1.0, (constraints.maxHeight - 145) / 145),
@@ -113,7 +115,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   ),
                 )
               ),
-    
+                
               const Positioned(
                 bottom: -15,
                 right: 320,
@@ -122,7 +124,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   color: Utils.mainGreen
                 )
               ),
-
+              
               const Positioned(
                 bottom: -25,
                 right: 80,
@@ -131,7 +133,7 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   color: Utils.mainGreen
                 )
               ),
-
+              
               SlideTransition(
                 position: Tween<Offset>(
                   begin: Offset(-1.0, (constraints.maxHeight - 230) / 230),
@@ -143,7 +145,6 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
                   color: Utils.mainGreen
                 )
               ),
-              
             ]
           );
         }
