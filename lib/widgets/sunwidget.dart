@@ -28,8 +28,8 @@ class _SunWidgetState extends State<SunWidget> with SingleTickerProviderStateMix
     PrimaryBannerStyles styles = Utils.primaryBannerStyles[Utils.getDeviceType(context)] as PrimaryBannerStyles;
 
     return Positioned(
-      top: 50,
-      right: 50,
+      top: styles.sunPadding,
+      right: styles.sunPadding,
       child: Transform.scale(
         scale: styles.sunScale,
         alignment: Alignment.topRight,

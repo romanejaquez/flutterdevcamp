@@ -76,14 +76,14 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
               
               SlideTransition(
                 position: Tween<Offset>(
-                  begin: Offset(-1.0, (constraints.maxHeight - 98) / 98),
-                  end: Offset(MediaQuery.of(context).size.width / 98, (constraints.maxHeight - 98) / 98)
+                  begin: Offset(-1.0, (constraints.maxHeight - styles.tree2Size) / styles.tree2Size),
+                  end: Offset(MediaQuery.of(context).size.width / styles.tree2Size, (constraints.maxHeight - styles.tree2Size) / styles.tree2Size)
                  ).animate(CurvedAnimation(parent: controller2, curve: Curves.linear)
                 ),
-                child: const Opacity(
+                child: Opacity(
                   opacity: 0.5,
                   child: Icon(
-                    Icons.forest, size: 100, 
+                    Icons.forest, size: styles.tree2Size + (styles.tree2Size * 0.020), 
                     color: Utils.mainGreen
                   ),
                 )
@@ -91,59 +91,68 @@ class _TreesWidgetState extends State<TreesWidget> with TickerProviderStateMixin
               
               Positioned(
                 bottom: -7,
-                left: MediaQuery.of(context).size.width / 2,
-                child: const Opacity(
+                left: MediaQuery.of(context).size.width / 2 - (styles.tree3Size / 2),
+                child: Opacity(
                   opacity: 0.5,
                   child: Icon(
-                    Icons.forest, size: 70, 
+                    Icons.forest, size: styles.tree3Size, 
                     color: Utils.mainGreen
                   ),
                 )
               ),
+
+              Positioned(
+                bottom: styles.tree4BottomMargin,
+                right: styles.tree4RightMargin,
+                child: Icon(
+                  Icons.forest, size: styles.tree4Size, 
+                  color: Utils.mainGreen
+                )
+              ),
                 
-              SlideTransition(
-                position: Tween<Offset>(
-                  begin: Offset(-1.0, (constraints.maxHeight - 145) / 145),
-                  end: Offset(MediaQuery.of(context).size.width / 145, (constraints.maxHeight - 145) / 145)
-                  ).animate(CurvedAnimation(parent: controller3, curve: Curves.linear)
+              Visibility(
+                visible: styles.tree5Visibility,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: Offset(-1.0, (constraints.maxHeight - 145) / 145),
+                    end: Offset(MediaQuery.of(context).size.width / 145, (constraints.maxHeight - 145) / 145)
+                    ).animate(CurvedAnimation(parent: controller3, curve: Curves.linear)
+                  ),
+                  child: const Opacity(
+                    opacity: 0.2,
+                    child: Icon(
+                      Icons.forest, size: 150, 
+                      color: Utils.mainGreen
+                    ),
+                  )
                 ),
-                child: const Opacity(
-                  opacity: 0.2,
+              ),
+                
+              Visibility(
+                visible: styles.tree6Visibility,
+                child: const Positioned(
+                  bottom: -15,
+                  right: 320,
                   child: Icon(
-                    Icons.forest, size: 150, 
+                    Icons.forest, size: 120, 
                     color: Utils.mainGreen
-                  ),
-                )
-              ),
-                
-              const Positioned(
-                bottom: -15,
-                right: 320,
-                child: Icon(
-                  Icons.forest, size: 120, 
-                  color: Utils.mainGreen
-                )
-              ),
-              
-              const Positioned(
-                bottom: -25,
-                right: 80,
-                child: Icon(
-                  Icons.forest, size: 220, 
-                  color: Utils.mainGreen
-                )
-              ),
-              
-              SlideTransition(
-                position: Tween<Offset>(
-                  begin: Offset(-1.0, (constraints.maxHeight - 230) / 230),
-                  end: Offset(MediaQuery.of(context).size.width / 230, (constraints.maxHeight - 230) / 230)
-                 ).animate(CurvedAnimation(parent: controller4, curve: Curves.linear)
+                  )
                 ),
-                child: const Icon(
-                  Icons.forest, size: 240, 
-                  color: Utils.mainGreen
-                )
+              ),
+              
+              Visibility(
+                visible: styles.tree7Visibility,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: Offset(-1.0, (constraints.maxHeight - 230) / 230),
+                    end: Offset(MediaQuery.of(context).size.width / 230, (constraints.maxHeight - 230) / 230)
+                   ).animate(CurvedAnimation(parent: controller4, curve: Curves.linear)
+                  ),
+                  child: const Icon(
+                    Icons.forest, size: 240, 
+                    color: Utils.mainGreen
+                  )
+                ),
               ),
             ]
           );

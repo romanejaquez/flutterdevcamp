@@ -15,7 +15,7 @@ class PrimaryBanner extends StatelessWidget {
     PrimaryBannerStyles styles = Utils.primaryBannerStyles[Utils.getDeviceType(context)] as PrimaryBannerStyles;
     
     return Container(
-      height: 850,
+      height: styles.bannerHeight > 0 ? styles.bannerHeight : MediaQuery.of(context).size.height,
       color: Utils.mainBlue,
       child: Stack(
         children: [
@@ -65,11 +65,24 @@ class PrimaryBanner extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Text('Dev Camp \'22',
-                    style: TextStyle(
-                      color: Colors.white, 
-                      fontSize: styles.devCampFontSize,
-                      fontWeight: FontWeight.bold
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: 'Dev Camp ',
+                          style: TextStyle(
+                            color: Colors.white, 
+                            fontSize: styles.devCampFontSize,
+                            fontWeight: FontWeight.bold
+                          )
+                        ),
+                        TextSpan(text: '\'22',
+                          style: TextStyle(
+                            color: Colors.white, 
+                            fontSize: styles.yearFontSize,
+                            fontWeight: FontWeight.bold
+                          )
+                        )
+                      ]
                     )
                   ),
                   Container(

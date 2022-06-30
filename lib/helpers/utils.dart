@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/devicetype.dart';
 import 'package:flutterdevcamp/helpers/flutterdevcampfonts.dart';
 import 'package:flutterdevcamp/models/campinfomodel.dart';
+import 'package:flutterdevcamp/models/flutterdevcampheaderstyles.dart';
+import 'package:flutterdevcamp/models/mainpagestyles.dart';
 import 'package:flutterdevcamp/models/primarybannerstyles.dart';
 
 class Utils {
@@ -27,44 +29,101 @@ class Utils {
 
   static Map<DeviceType, PrimaryBannerStyles> primaryBannerStyles = {
     DeviceType.laptop: PrimaryBannerStyles(
+      bannerHeight: 850,
       sunScale: 1,
       tentIconSize: 80,
       dashIconSize: 90,
       flutterFontSize: 80,
       devCampFontSize: 120,
+      yearFontSize: 120,
       webEditionfontSize: 25,
       treeScale: 1,
       tentIconLeftMargin: 230,
       dashIconLeftMargin: 410,
       dashIconTopMargin: -10,
-      tree1Size: 180
+      tree1Size: 180,
+      sunPadding: 50,
+      tree2Size: 100,
+      tree3Size: 70,
+      tree4Size: 220,
+      tree4RightMargin: 80,
+      tree4BottomMargin: -25,
+      tree5Visibility: true,
+      tree6Visibility: true,
+      tree7Visibility: true,
     ),
     DeviceType.mobile: PrimaryBannerStyles(
+      bannerHeight: 0,
       sunScale: 0.5,
       tentIconSize: 40,
       dashIconSize: 40,
       flutterFontSize: 40,
-      devCampFontSize: 80,
-      webEditionfontSize: 25,
+      devCampFontSize: 60,
+      yearFontSize: 120,
+      webEditionfontSize: 20,
       treeScale: 0.75,
       tentIconLeftMargin: 120,
       dashIconLeftMargin: 210,
       dashIconTopMargin: 0,
-      tree1Size: 120
+      tree1Size: 120,
+      sunPadding: 25,
+      tree2Size: 120,
+      tree3Size: 70,
+      tree4Size: 150,
+      tree4RightMargin: 20,
+      tree4BottomMargin: -15,
+      tree5Visibility: false,
+      tree6Visibility: false,
+      tree7Visibility: false,
     ),
     DeviceType.tablet: PrimaryBannerStyles(
+      bannerHeight: 750,
       sunScale: 0.5,
       tentIconSize: 60,
       dashIconSize: 60,
       flutterFontSize: 60,
       devCampFontSize: 100,
+      yearFontSize: 100,
       webEditionfontSize: 20,
       treeScale: 1,
       tentIconLeftMargin: 170,
       dashIconLeftMargin: 310,
       dashIconTopMargin: 0,
-      tree1Size: 140
+      tree1Size: 140,
+      sunPadding: 30,
+      tree2Size: 100,
+      tree3Size: 70,
+      tree4Size: 220,
+      tree4RightMargin: 50,
+      tree4BottomMargin: -25,
+      tree5Visibility: true,
+      tree6Visibility: false,
+      tree7Visibility: false,
     )
+  };
+
+  static Map<DeviceType, MainPageStyles> mainPageStyles = {
+    DeviceType.laptop: MainPageStyles(
+      showBanners: true
+    ),
+    DeviceType.tablet: MainPageStyles(
+      showBanners: true
+    ),
+    DeviceType.mobile: MainPageStyles(
+      showBanners: false
+    ),
+  };
+
+  static Map<DeviceType, FlutterDevCampHeaderStyles> headerStyles = {
+    DeviceType.laptop: FlutterDevCampHeaderStyles(
+      showHeaderLabel: true
+    ),
+    DeviceType.mobile: FlutterDevCampHeaderStyles(
+      showHeaderLabel: false
+    ),
+    DeviceType.tablet: FlutterDevCampHeaderStyles(
+      showHeaderLabel: true
+    ),
   };
 
   static DeviceType getDeviceType(BuildContext context) {

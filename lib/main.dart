@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/flutterdevcampfonts.dart';
 import 'package:flutterdevcamp/helpers/utils.dart';
+import 'package:flutterdevcamp/models/mainpagestyles.dart';
 import 'package:flutterdevcamp/widgets/flutterdevcampheader.dart';
 import 'package:flutterdevcamp/widgets/footerwidget.dart';
 import 'package:flutterdevcamp/widgets/primarybanner.dart';
@@ -35,31 +36,29 @@ class _FlutterDevCampAppState extends State<FlutterDevCampApp> {
   @override
   Widget build(BuildContext context) {
 
+    MainPageStyles styles = Utils.mainPageStyles[Utils.getDeviceType(context)] as MainPageStyles;
+
     return Scaffold(
       extendBodyBehindAppBar: true,
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
         toolbarHeight: 80,
-        iconTheme: IconThemeData(color: Colors.white, size: 30),
+        iconTheme: const IconThemeData(color: Colors.white, size: 30),
       ),
-      body: SingleChildScrollView(
+      body: styles.showBanners ? SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: const [
             PrimaryBanner(),
-            
             SecondaryBanner(),
-
             StayTunedBanner(),
-            
             UpcomingEventsBanner(),
-            
             FooterWidget()
           ],
         ),
-      ),
+      ) : const PrimaryBanner(),
     );
   }
 }
