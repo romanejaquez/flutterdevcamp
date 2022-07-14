@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdevcamp/helpers/flutterdevcampfonts.dart';
+import 'package:flutterdevcamp/helpers/utils.dart';
+import 'package:flutterdevcamp/models/staytunedbannerstyles.dart';
 
 class CampingWidget extends StatefulWidget {
   CampingWidget({Key? key}) : super(key: key);
@@ -59,6 +61,8 @@ class _CampingWidgetState extends State<CampingWidget> with TickerProviderStateM
       controller3.repeat();
     });
 
+    StayTunedBannerStyles styles = Utils.stayTunedBannerStyles[Utils.getDeviceType(context)] as StayTunedBannerStyles;
+
     return Positioned.fill(
       child: Stack(
         children: [
@@ -71,51 +75,59 @@ class _CampingWidgetState extends State<CampingWidget> with TickerProviderStateM
               color: Colors.grey[500]
             )
           ),
-          Positioned(
-            bottom: 30,
-            left: 50,
-            child: Icon(Icons.forest, size: 150, color: Colors.grey[500])
-          ),
-          Positioned(
-            bottom: 30,
-            left: 200,
-            child: Icon(FlutterDevCampFonts.icon1, size: 150, color: Colors.grey[500])
-          ),
-
-          ...List.generate(
-            controllers.length, (index) {
-              var ctl = controllers[index];
-
-              return Positioned(
-                bottom: 20,
-                left: 380,
-                child: FadeTransition(
-                  opacity: Tween<double>(begin: 1.0, end: 0.0).
-                  animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)),
-                  child: SizedBox(
-                    width: 200,
-                    height: 300,
-                    child: Stack(
-                      children: [
-                        SlideTransition(
-                          position: Tween<Offset>(
-                            begin: Offset(0.0, 1.5),
-                            end: Offset(0.5, -1.0)
-                          ).animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)
-                        ),
-                          child: ScaleTransition(
-                            scale: Tween<double>(
-                              begin: 1.5,
-                              end: 1.0
-                            ).animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)),
-                            child: Icon(Icons.cloud, size: 60, color: Colors.grey[500]))
-                        )
-                      ]
-                    )
-                  )
+          Transform.scale(
+            scale: styles.campWidgetScale,
+            alignment: Alignment.bottomLeft,
+            child: Stack(
+              children: [
+                Positioned(
+                  bottom: 30,
+                  left: 50,
+                  child: Icon(Icons.forest, size: 150, color: Colors.grey[500])
                 ),
-              );
-            }
+                Positioned(
+                  bottom: 30,
+                  left: 200,
+                  child: Icon(FlutterDevCampFonts.icon1, size: 150, color: Colors.grey[500])
+                ),
+          
+                ...List.generate(
+                  controllers.length, (index) {
+                    var ctl = controllers[index];
+          
+                    return Positioned(
+                      bottom: 20,
+                      left: 380,
+                      child: FadeTransition(
+                        opacity: Tween<double>(begin: 1.0, end: 0.0).
+                        animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)),
+                        child: SizedBox(
+                          width: 200,
+                          height: 300,
+                          child: Stack(
+                            children: [
+                              SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: Offset(0.0, 1.5),
+                                  end: Offset(0.5, -1.0)
+                                ).animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)
+                              ),
+                                child: ScaleTransition(
+                                  scale: Tween<double>(
+                                    begin: 1.5,
+                                    end: 1.0
+                                  ).animate(CurvedAnimation(parent: ctl, curve: Curves.easeInOut)),
+                                  child: Icon(Icons.cloud, size: 60, color: Colors.grey[500]))
+                              )
+                            ]
+                          )
+                        )
+                      ),
+                    );
+                  }
+                )
+              ],
+            ),
           ),
         ],
       ),

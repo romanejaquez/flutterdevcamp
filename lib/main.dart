@@ -40,7 +40,7 @@ class _FlutterDevCampAppState extends State<FlutterDevCampApp> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      drawer: const Drawer(),
+      drawer: styles.showMenu ? const Drawer() : null,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,

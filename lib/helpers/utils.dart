@@ -5,6 +5,9 @@ import 'package:flutterdevcamp/models/campinfomodel.dart';
 import 'package:flutterdevcamp/models/flutterdevcampheaderstyles.dart';
 import 'package:flutterdevcamp/models/mainpagestyles.dart';
 import 'package:flutterdevcamp/models/primarybannerstyles.dart';
+import 'package:flutterdevcamp/models/secondarybannerstyles.dart';
+import 'package:flutterdevcamp/models/staytunedbannerstyles.dart';
+import 'package:flutterdevcamp/models/upcomingbannerstyles.dart';
 
 class Utils {
 
@@ -104,13 +107,71 @@ class Utils {
 
   static Map<DeviceType, MainPageStyles> mainPageStyles = {
     DeviceType.laptop: MainPageStyles(
-      showBanners: true
+      showBanners: true,
+      showMenu: false
     ),
     DeviceType.tablet: MainPageStyles(
-      showBanners: true
+      showBanners: true,
+      showMenu: false
     ),
     DeviceType.mobile: MainPageStyles(
-      showBanners: false
+      showBanners: false,
+      showMenu: true
+    ),
+  };
+  
+
+  static Map<DeviceType, SecondaryBannerStyles> secondaryBannerStyles = {
+    DeviceType.laptop: SecondaryBannerStyles(
+      height: 600,
+      singleColumn: false
+    ),
+    DeviceType.tablet: SecondaryBannerStyles(
+      height: 0,
+      singleColumn: true
+    ),
+    DeviceType.mobile: SecondaryBannerStyles(
+      height: 0,
+      singleColumn: true
+    ),
+  };
+
+  static Map<DeviceType, UpcomingBannerStyles> upcomingBannerStyles = {
+    DeviceType.laptop: UpcomingBannerStyles(
+      imageTopMargin: 0,
+      imageRightMargin: 40,
+      contenAlignment: TextAlign.start,
+      singleColumn: false
+    ),
+    DeviceType.tablet: UpcomingBannerStyles(
+      imageTopMargin: 40,
+      imageRightMargin: 0,
+      contenAlignment: TextAlign.center,
+      singleColumn: true
+    ),
+    DeviceType.mobile: UpcomingBannerStyles(
+      imageTopMargin: 40,
+      imageRightMargin: 0,
+      contenAlignment: TextAlign.start,
+      singleColumn: false
+    ),
+  };
+
+  static Map<DeviceType, StayTunedBannerStyles> stayTunedBannerStyles = {
+    DeviceType.laptop: StayTunedBannerStyles(
+      campWidgetScale: 1,
+      singleColumnLayout: false,
+      height: 600
+    ),
+    DeviceType.tablet: StayTunedBannerStyles(
+      campWidgetScale: 0.7,
+      singleColumnLayout: true,
+      height: 800
+    ),
+    DeviceType.mobile: StayTunedBannerStyles(
+      campWidgetScale: 0.4,
+      singleColumnLayout: true,
+      height: 800
     ),
   };
 
